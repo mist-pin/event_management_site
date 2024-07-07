@@ -196,9 +196,11 @@ nav {
 .galery-holder {
     display: grid;
     height: fit-content;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 5px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .img-holder {
@@ -207,8 +209,10 @@ nav {
     border-radius: 10px;
     background-color: #555;
     height: fit-content;
+    width: fit-content;
     position: relative;
     overflow: hidden;
+    transition: 1s;
 }
 
 .gal-img {
@@ -225,11 +229,29 @@ nav {
     padding: 0%;
     width: 50vh;
     height: 25vh;
-    background-color: #0000004d;
+    background-color: #000000a8;
+    visibility: hidden;
+    transition: 1s;
 }
 
 .img-description {
     position: absolute;
     bottom: 0%;
     color: #bebebe;
+    text-align: center;
+    visibility: collapse;
+    transition: 1s;
+}
+
+.img-holder:hover {
+    z-index: 20;
+    transform: scale(1.5, 1.5);
+}
+
+.img-holder:hover>.img-description {
+    visibility: visible;
+}
+
+.img-holder:hover>.gal-img-cover {
+    visibility: visible;
 }
