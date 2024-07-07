@@ -3,10 +3,27 @@ body {
     margin: 0;
     padding: 0;
     background-color: #d3f0e2;
+    overflow-x: hidden;
 }
 
 
+/* book now */
+.book-now {
+    position: fixed;
+    bottom: 5vh;
+    right: 5ch;
+    z-index: 40;
+    border: 2px black solid;
+    border-radius: 30px 30px 30px 30px;
+    padding: 1vh 2vh;
+    width: fit-content;
+    background-color: blue;
+}
 
+.book-now-text {
+    font-weight: 900;
+    color: white;
+}
 
 /* navbar */
 nav {
@@ -17,6 +34,7 @@ nav {
     align-items: center;
     padding: 20px 50px;
     background-color: rgba(0, 0, 0, 0);
+    z-index: 200;
 }
 
 .navbar_brand {
