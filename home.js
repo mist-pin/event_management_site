@@ -1,13 +1,6 @@
 // document.addEventListener("DOMContentLoaded", (event) => {});
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Draggable)
 
-//overall scroll snap
-// gsap.to(window, {
-//     scrollTrigger: {
-//         snap: .5
-//     }
-// })
-
 //nav-link
 document.querySelectorAll(".nav-link").forEach(
     link => {
@@ -26,8 +19,10 @@ document.querySelector(".show_contact_info").addEventListener("click", function 
     target = document.querySelector(".contact-secton ")
     if (target.style.display == "none") {
         target.style.display = "block";
-    } else {
+    } else if (target.style.display == "block") {
         target.style.display = "none";
+    } else {
+        target.style.display = "block";
     }
 })
 
@@ -96,15 +91,25 @@ gsap.to(".about-holder", {
 })
 
 //gallery
+
 gsap.from(".img-holder", {
-    height: "50%",
+    height: "20%",
     scrollTrigger: {
         trigger: ".img-holder",
         scrub: true,
         start: "top 80%",
         end: "top 10%",
-        markers: true,
     }
 })
 
 // reviews
+gsap.from(".reviews-holder", {
+    xPercent: 100,
+    opacity: .5,
+    duration: 2,
+    scrollTrigger: {
+        trigger: ".reviews-holder",
+        start: "top 20%",
+        end: "bottom bottom"
+    }
+})
