@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        .booking-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="booking-container">
+        <h2>Book Your Event</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="eventType">Event type:</label>
+                <select id="eventType" name="eventType">
+                    <option value="conference">Conference</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="workshop">Workshop</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="calendar">Calendar:</label>
+                <input type="datetime-local" id="calendar" name="calendar">
+            </div>
+            <div class="form-group">
+                <label for="addr">Address:</label>
+                <input type="text" id="addr" name="contactNumber">
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <div id="map"></div>
+                    <input type="hidden" id="location" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Contact no:</label>
+                    <input type="number" id="contactNumber" name="contactNumber">
+                </div>
+                <input type="submit" value="Finalize">
+        </form>
+    </div>
+
+    <script>
+        let map, marker;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 14.2397, lng: 75.0344 },
+                zoom: 8
+            });
+
+            map.addListener('click', function (event) {
+                placeMarker(event.latLng);
+                document.getElementById('location').value = event.latLng.lat() + ',' + event.latLng.lng();
+            });
+        }
+
+        function placeMarker(location) {
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+            }
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Collect the form data
+            const eventType = document.getElementById('eventType').value;
+            const calendar = document.getElementById('calendar').value;
+            const location = document.getElementById('location').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+            const address = document.getElementById('addr').value;
+
+            // Display form data (for demo purposes)
+            alert(`Event type: ${eventType}\nCalendar: ${calendar}\nLocation: ${location}\n Address: ${address}\nContact no: ${contactNumber}`);
+        });
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"
+        async defer></script>
+</body>
+
+</html>

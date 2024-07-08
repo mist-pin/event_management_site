@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        a{
+            display:block;
+            text-decoration:none;
+            margin:10px 20px;
+        }
+        .login-container input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button{
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome Back</h2>
+        <form id="loginForm">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            
+
+            <button type="button" onclick="submitForm()">Submit</button>
+             
+            <a href="signup.html">Dont have an account</a>
+               
+            <a href="forgot.html">forgot password</a>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('loginForm');
+            const formData = new FormData(form);
+
+            
+            const email = formData.get('email');
+            const password = formData.get('password');
+            
+
+            if (email && password){
+                console.log('Email:', email);
+                console.log('Password:', password);
+                alert('Form submitted successfully!');
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        }
+    </script>
+</body>
+</html>

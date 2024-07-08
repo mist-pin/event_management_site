@@ -109,7 +109,7 @@ gsap.from(".reviews-holder", {
     duration: 2,
     scrollTrigger: {
         trigger: ".reviews-holder",
-        start: "top 20%",
+        start: "top center",
         end: "bottom bottom"
     }
 })
